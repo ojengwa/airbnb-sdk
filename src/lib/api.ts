@@ -30,7 +30,7 @@ class Airbnb {
     private userAgent: String;
     private uuid: String;
     private udid: String;
-    private randomize: Boolean;
+    private _randomize: Boolean
 
     constructor(
         username:String | null =null, 
@@ -49,7 +49,7 @@ class Airbnb {
         this.userAgent = "Airbnb/19.18 AppVersion/19.18 iPhone/12.2 Type/Phone"
         this.udid = "9120210f8fb1ae837affff54a0a2f64da821d227"
         this.uuid = "C326397B-3A38-474B-973B-F022E6E4E6CC"
-        this.randomize = randomize
+        this._randomize = randomize
 
         this._session.defaults.headers = {
             "accept": "application/json",
@@ -107,6 +107,10 @@ class Airbnb {
 
             this._session.defaults.headers[ "x-airbnb-oauth-token"] =  this._accessToken;
         }
+    }
+
+    public randomize() {
+        return this._randomize;
     }
 
     public accessToken(){
