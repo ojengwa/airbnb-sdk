@@ -19,7 +19,7 @@
     "test": "run-s build test:* && ava",
     "test:lint": "tslint --project . && prettier \"src/**/*.ts\" --list-different",
     "test:unit": "nyc --silent ava",
-    "watch": "run-s clean build:main && run-p \"build:main -- -w\" \"test:unit -- --watch\"",
+    "watch": "run-s clean build:main && run-p \"build:main --  --skipLibCheck -w\"",
     "cov": "run-s build test:unit cov:html && open-cli coverage/index.html",
     "cov:html": "nyc report --reporter=html",
     "cov:send": "nyc report --reporter=lcov && codecov",
@@ -50,7 +50,10 @@
     "node": ">=8.9"
   },
   "dependencies": {
-    "axios": "^0.21.2",
+    "add": "^2.0.6",
+    "axios": "^0.27.2",
+    "got": "^12.4.1",
+    "http2-wrapper": "^2.1.11",
     "lodash": "^4.17.15",
     "sha.js": "^2.4.11",
     "uuid": "^3.3.3"
@@ -76,7 +79,7 @@
     "tslint": "^5.18.0",
     "tslint-config-prettier": "^1.18.0",
     "tslint-immutable": "^6.0.1",
-    "typescript": "^3.5.3"
+    "typescript": "^4.8.3"
   },
   "ava": {
     "failFast": true,
